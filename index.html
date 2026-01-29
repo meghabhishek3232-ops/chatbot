@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mini Chatbot</title>
+<style>
+body{
+    background:#222;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:Arial;
+}
+.box{
+    background:#fff;
+    width:300px;
+    border-radius:10px;
+    overflow:hidden;
+}
+.head{
+    background:#6c63ff;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+.chat{
+    height:200px;
+    padding:10px;
+    overflow-y:auto;
+    font-size:14px;
+}
+input{
+    width:75%;
+    padding:8px;
+    border:none;
+    outline:none;
+}
+button{
+    width:25%;
+    border:none;
+    background:#6c63ff;
+    color:white;
+}
+.user{color:#333;text-align:right;}
+.bot{color:#6c63ff;}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <div class="head">🤖 Mini Bot</div>
+    <div class="chat" id="chat">
+        <div class="bot">Hi! Ask me something 🙂</div>
+    </div>
+    <input id="msg" placeholder="Type here...">
+    <button onclick="send()">Send</button>
+</div>
+
+<script>
+function send(){
+    let m = msg.value.toLowerCase();
+    if(!m) return;
+
+    chat.innerHTML += `<div class="user">${m}</div>`;
+
+    let r = "I don't know 🤔";
+    if(m.includes("hi")) r="Hello 👋";
+    else if(m.includes("name")) r="I'm Mini Bot 🤖";
+    else if(m.includes("bye")) r="Bye! 👋";
+
+    chat.innerHTML += `<div class="bot">${r}</div>`;
+    msg.value="";
+    chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
